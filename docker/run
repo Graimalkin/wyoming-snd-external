@@ -11,12 +11,11 @@ while [ -n "$1" ]; do
     shift
 done
 
-if [[ -z "${device}" && -z "${program}" ]]; then
-    echo "--device <NAME> is required. Run 'aplay -L' for a list (prefer plughw: devices)."
-    exit 1
-fi
-
 if [ -z "${program}" ]; then
+    if [ -z "${device}" ]; then
+        echo "--device <NAME> is required. Run 'aplay -L' for a list (prefer plughw: devices)."
+        exit 1
+    fi
     program="aplay -D ${device} -r 22050 -c 1 -f S16_LE -t raw"
 fi
 
