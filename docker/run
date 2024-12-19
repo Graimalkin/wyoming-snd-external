@@ -11,9 +11,6 @@ while [ -n "$1" ]; do
     shift
 done
 
-echo "args: ${args[@]}"
-echo "device: ${device}"
-
 if [ -z "${program}" ]; then
     if [ -z "${device}" ]; then
         echo "--device <NAME> is required. Run 'aplay -L' for a list (prefer plughw: devices)."
